@@ -17,12 +17,21 @@ set(CMAKE_MODULE_LINKER_FLAGS "${CMAKE_MODULE_LINKER_FLAGS} ${LINKER_FLAGS}")
 
 # the check is not needed for androidndk
 if(CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+add_compile_options("SHELL:-mllvm --polly")
+add_compile_options("SHELL:-mllvm --polly-run-inliner")
+add_compile_options("SHELL:-mllvm --polly-invariant-load-hoisting")
+add_compile_options("SHELL:-mllvm --polly-run-dce")
+add_compile_options("SHELL:-mllvm --polly-vectorizer=stripmine")
+
 add_compile_options("SHELL:-mllvm --enable-loopinterchange")
 add_compile_options("SHELL:-mllvm --enable-partial-inlining")
+add_compile_options("SHELL:-mllvm --enable-loop-flatten")
+add_compile_options("SHELL:-mllvm --enable-jump-table-to-switch")
 add_compile_options("SHELL:-mllvm --enable-dfa-jump-thread")
 add_compile_options("SHELL:-mllvm --enable-knowledge-retention")
 add_compile_options("SHELL:-mllvm --extra-vectorizer-passes=true")
-add_compile_options("SHELL:-funsafe-math-optimizations")
+add_compile_options("-funsafe-math-optimizations")
+add_compile_options("SHELL:-mllvm --hot-cold-split")
 endif()
 
 include(CheckIPOSupported)
