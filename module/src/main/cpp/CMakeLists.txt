@@ -10,6 +10,8 @@ else ()
     set(LINKER_FLAGS "-ffixed-x18 -Wl,--hash-style=both")
 endif ()
 
+set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "-O3 -g1 -DNDEBUG" CACHE STRING "RelWithDebInfo compiler flags" FORCE)
+
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${CXX_FLAGS}")
 
 set(CMAKE_SHARED_LINKER_FLAGS "${CMAKE_SHARED_LINKER_FLAGS} ${LINKER_FLAGS}")
