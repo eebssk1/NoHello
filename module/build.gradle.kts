@@ -31,7 +31,8 @@ android {
                 cppFlags("-std=c++20")
                 arguments(
                     "-DANDROID_STL=none",
-                    "-DMODULE_NAME=$moduleId"
+                    "-DMODULE_NAME=$moduleId",
+                    "-DCMAKE_VERBOSE_MAKEFILE=ON"
                 )
             }
         }
