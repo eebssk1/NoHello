@@ -57,7 +57,7 @@ if (CMAKE_IPO_AVAILABLE)
     set(CMAKE_INTERPROCEDURAL_OPTIMIZATION TRUE)
 endif()
 
-add_library(${MODULE_NAME} SHARED nohello.cpp)
+add_library(${MODULE_NAME} SHARED nohello.cpp atexit.cpp)
 target_link_libraries(${MODULE_NAME} cxx log)
 
 add_subdirectory(external)
